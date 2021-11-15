@@ -1,2 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render 'shared/banner' %>
+
+<div class="container">
+  <div class="d-flex p-2"><p>Already have an account ?</p><%= link_to "Sign in", "new_user_session/users/sign_in", class: "btn btn-primary" %></div>
+  <div class="d-flex p-2"><p>New on Work @ Home ?</p><%= link_to "Sign up", "new_user_registration/users/sign_up", class: "btn btn-primary"%></div>
+</div>

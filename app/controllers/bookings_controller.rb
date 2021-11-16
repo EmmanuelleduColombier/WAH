@@ -1,11 +1,12 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking)
   end
 
   def new
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   # def mybookings
@@ -14,6 +15,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.status = 'pending'
     @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id
@@ -29,10 +31,12 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.update(booking_params)
     redirect_to bookings_path
   end

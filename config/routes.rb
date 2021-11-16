@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     collection do
       get 'myflats'
     end
-
     resources :bookings, only: [:new, :create]
   end
 

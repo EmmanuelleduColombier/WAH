@@ -1,6 +1,10 @@
 <%= render 'shared/banner' %>
 
 <div class="container">
-  <div class="d-flex p-2"><p>Already have an account ?</p><%= link_to "Sign in", "new_user_session/users/sign_in", class: "btn btn-primary" %></div>
-  <div class="d-flex p-2"><p>New on Work @ Home ?</p><%= link_to "Sign up", "new_user_registration/users/sign_up", class: "btn btn-primary"%></div>
+  <% if user_signed_in? %>
+    <div class="d-flex p-2"><p>Log Out</p><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %></div>
+  <% else %>
+    <div class="d-flex p-2"><p>Already have an account ?</p><%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %></div>
+    <div class="d-flex p-2"><p>New on Work @ Home ?</p><%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%></div>
+  <% end %>
 </div>

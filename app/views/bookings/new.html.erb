@@ -1,5 +1,7 @@
 <%= simple_form_for @booking do |f| %>
-  <%= f.input %>
-  <%= f.input  %>
+  <%= f.association :flat %>
+  <%= f.input :start %>
+  <%= f.input :end %>
+  <%= f.input :comments %>
   <%= f.submit %>
 <% end %>

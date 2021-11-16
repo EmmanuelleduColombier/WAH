@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Bookings.all
+    @bookings = Booking.all
   end
 
   def new
+    @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
   end
 
@@ -14,7 +15,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.status = 'pending'
-    @flat = Flat.find(params[:id])
+    @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id
     @booking.user_id = current_user
     number_of_days = @booking.end - @booking.start

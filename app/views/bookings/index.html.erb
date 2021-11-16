@@ -2,10 +2,11 @@
 
 <% @bookings.each do |booking| %>
   <div class="card">
-    <%= booking.start %>
-    <%= booking.end %>
-    <%= booking.total_price %>
-    <%= booking.comments %>
-    <%= booking.status %>
+    start :<%= booking.start %>
+    end :<%= booking.end %>
+    total price :<%= booking.total_price %>
+    comment :<%= booking.comments %>
+    status :<%= booking.status %>
+    <%= link_to "Edit this booking", edit_booking_path(booking) %>
   </div>
 <% end %>

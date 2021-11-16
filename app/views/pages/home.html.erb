@@ -1,5 +1,6 @@
 <%= render 'shared/banner' %>
 
+
 <div class="container">
   <% if user_signed_in? %>
     <div class="d-flex p-2"><p>Log Out</p><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %></div>
@@ -8,3 +9,5 @@
     <div class="d-flex p-2"><p>New on Work @ Home ?</p><%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%></div>
   <% end %>
 </div>
+
+<%= render 'shared/footer' %>

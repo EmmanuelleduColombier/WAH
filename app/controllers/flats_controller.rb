@@ -1,18 +1,22 @@
 class FlatsController < ApplicationController
   def index
     @flats = Flat.all
+    authorize @flats
   end
 
   def show
     @flat = Flat.find(params[:id])
+    authorize @flat
   end
 
   def new
     @flat = Flat.new
+    authorize @flat
   end
 
   def create
     @flat = Flat.new(flat_params)
+    authorize @flat
     @flat.user = current_user
     if @flat.save
       redirect_to flats_path
@@ -31,7 +35,11 @@ class FlatsController < ApplicationController
   end
 
   def myflats
-    #@restaurants = policy_scope(Restaurant).order(created_at: :desc)
+    @flats = policy_scope(Flat)
+    @bookings = []
+    @flats.each do |flat|
+      @bookings.push(Booking.where(flat: flat))
+    end
   end
 
   private

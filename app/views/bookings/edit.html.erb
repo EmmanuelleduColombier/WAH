@@ -1,0 +1,13 @@
+
+<h3>Your booking :
+  Start :<%= @booking.start %> <hr>
+  End :<%= @booking.end %> <hr>
+  Comments :<%= @booking.comments %>
+</h3>
+
+<%= simple_form_for @booking do |f| %>
+  <%= f.input :start %>
+  <%= f.input :end %>
+  <%= f.input :comments %>
+  <%= f.submit %>
+<% end %>

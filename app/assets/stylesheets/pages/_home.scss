@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 .banner {
   background-image: url('image_banner.png');
-  height: 60vh;
+  object-fit: contain;
+  height: 70vh;
   color: #2B0548;
 }

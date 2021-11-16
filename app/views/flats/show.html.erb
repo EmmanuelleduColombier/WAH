@@ -1,0 +1,29 @@
+<div class="container">
+    <h1><%= @flat.title %></h1>
+  </div>
+</div>
+<div class="container">
+  <ul class="list-group">
+    <div class="card-product">
+      <div class="card-product-infos">
+        <h3><%= @flat.title %></h3>
+        <p><%= @flat.address %></p>
+        <p><%= @flat.price %></p>
+        <p><%= @flat.room_type %></p>
+        <p><%= @flat.persons %></p>
+        <p><%= @flat.description %></p>
+        <p><%= @flat.owner_present %><%= @flat.has_pet %><%= @flat.has_computer %>
+        <%= @flat.has_coffee %>
+        </p>
+        <p> RATING </p>
+        <%= link_to 'Add a booking', new_flat_booking_path(params[:id]) %>
+      </div>
+    </div>
+  <%= link_to "delete",
+     flat_path(@flat),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  </ul>
+
+  <%= link_to 'Back', flats_path %>
+</div>

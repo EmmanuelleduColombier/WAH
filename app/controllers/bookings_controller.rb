@@ -8,16 +8,16 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
-  def mybookings
-    @bookings = Booking.joins(:flat).where(flat: {user: current_user})
-  end
+  # def mybookings
+  #   @bookings = Booking.joins(:flat).where(flat: {user: current_user})
+  # end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.status = 'pending'
     @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id
-    @booking.user_id = current_user
+    @booking.user = current_user
     number_of_days = @booking.end - @booking.start
     @booking.total_price = @flat.price * number_of_days
     if @booking.save
@@ -39,7 +39,6 @@ class BookingsController < ApplicationController
 
   def respond
     @booking = Booking.find(params[:id])
-    raise
     @booking.update(status: params[:status])
   end
 end
@@ -47,5 +46,5 @@ end
 private
 
 def booking_params
-  params.require(:booking).permit(:content, :start, :end)
+  params.require(:booking).permit(:comments, :start, :end)
 end

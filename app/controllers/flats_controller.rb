@@ -13,8 +13,9 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
+    @flat.user = current_user
     if @flat.save
-      redirect_to flat_path(@flat)
+      redirect_to flats_path
     else
       render :new
     end
@@ -30,7 +31,7 @@ class FlatsController < ApplicationController
   end
 
   def myflats
-    @restaurants = policy_scope(Restaurant).order(created_at: :desc)
+    #@restaurants = policy_scope(Restaurant).order(created_at: :desc)
   end
 
   private

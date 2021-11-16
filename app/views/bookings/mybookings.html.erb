@@ -1,0 +1,15 @@
+<h1>My bookings with status</h1>
+
+<%= @bookings.each do |booking| %>
+  <div>
+    <%= booking.start %>
+    <%= booking.number_of_nights %>
+    <%= booking.total_price %>
+    <div>
+      <%= simple_form_for booking do |f| %>
+        <%= f.button :accepted %>
+        <%= f.button :declined %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

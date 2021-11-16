@@ -1,0 +1,11 @@
+<h1>My current bookings</h1>
+
+<% @bookings.each do |booking| %>
+  <div class="card">
+    <%= booking.start %>
+    <%= booking.end %>
+    <%= booking.total_price %>
+    <%= booking.comments %>
+    <%= booking.status %>
+  </div>
+<% end %>

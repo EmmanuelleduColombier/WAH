@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
+    raise
     @booking.status = 'pending'
     @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id

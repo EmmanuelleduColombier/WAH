@@ -3,5 +3,8 @@
     <h1>Work at Home</h1>
     <p>Rent your flat to work with buddies everyday. Share a moment with another pro !</p>
     <p>(and eventually, find love and get married ❤️)</p>
+    <% if user_signed_in? %>
+      <div class="d-flex justify-content-center mt-4"><%= link_to "Browse flats", flats_path, class: "btn big-button" %></div>
+    <% end %>
   </div>
 </div>

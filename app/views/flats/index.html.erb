@@ -1,12 +1,18 @@
 <div class="container">
+
   <h1>All the places you may want to work at </h1>
-  <div class="cards">
+
     <% @flats.each do |flat| %>
-      <%= link_to flat_path(flat) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),">
-          <p><%= flat.title %></p>
+      <%= link_to flat_path(flat), class: "links" do %>
+        <div class="card-product mb-3">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+                <h2><%= flat.title %></h2>
+                <p><%= flat.address %></p>
+                <h3><%= flat.price %>€ / day </h3>
+            </div>
         </div>
       <% end %>
     <% end %>
-  </div>
+
 </div>

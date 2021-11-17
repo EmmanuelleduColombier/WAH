@@ -16,7 +16,11 @@
         <%= @flat.has_coffee %>
         </p>
         <p> RATING </p>
-        <%= link_to 'Add a booking', new_flat_booking_path(params[:id]) %>
+        <% if @flat.user.id == current_user.id %>
+          <%= link_to "Rent my co-work", flats_path  %>
+        <% else %>
+          <%= link_to 'Add a booking', new_flat_booking_path(params[:id]) %>
+        <% end %>
       </div>
     </div>
   <%= link_to "delete",

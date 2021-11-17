@@ -1,18 +1,31 @@
 <div class="container">
 
-  <h1>All the places you may want to work at </h1>
+  <h1 class="d-flex justify-content-center my-4">Places where you can work around you !</h1>
 
-    <% @flats.each do |flat| %>
-      <%= link_to flat_path(flat), class: "links" do %>
-        <div class="card-product mb-3">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-            <div class="card-product-infos">
-                <h2><%= flat.title %></h2>
-                <p><%= flat.address %></p>
-                <h3><%= flat.price %>€ / day </h3>
-            </div>
-        </div>
+  <div class="d-flex">
+
+    <div class="mr-5">
+      <% @flats.each do |flat| %>
+        <%= link_to flat_path(flat), class: "links" do %>
+          <div class="card-product mb-3">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="card-product-infos">
+                  <h2><%= flat.title %></h2>
+                  <p><%= flat.address %></p>
+                  <h3><%= flat.price %>€ / day </h3>
+              </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <div data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        style="width: 100%; height: 500px">
+    </div>
+
+  </div>
+   <%= link_to "Add a flat", new_flat_path, class: "btn big-button", id: "btn-add-flat"%>
 
 </div>

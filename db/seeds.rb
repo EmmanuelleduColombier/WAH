@@ -16,18 +16,18 @@ User.destroy_all
   last_name = Faker::Name.last_name
   first_name = Faker::Name.first_name
   password = "123456"
-  user = User.create!(email: email, last_name: last_name, first_name: first_name, password: password)
+  user = User.create(email: email, last_name: last_name, first_name: first_name, password: password)
 
   title = "Very nice desk in Paris!"
-  address = Faker::Address.full_address
+  address = "16 villa Gaudelet Paris"
   room_type = "shared desk space in living room"
   persons = rand(1..10)
   price = rand(10..30)
   description = Faker::Lorem.paragraph
-  flat = Flat.create!(title: title, address: address, room_type: room_type, persons: persons, price: price, description: description, user: user)
+  flat = Flat.create(title: title, address: address, room_type: room_type, persons: persons, price: price, description: description, user: user)
 
   start_date = Faker::Date.between(from: Date.today, to: '2022-12-31')
   end_date = Faker::Date.between(from: start_date, to: '2022-12-31')
   comments = Faker::Lorem.paragraph
-  booking = Booking.create!(start: start_date, end: end_date, comments: comments, user: user, flat: flat)
+  Booking.create(start: start_date, end: end_date, comments: comments, user: user, flat: flat)
 end

@@ -3,10 +3,34 @@
   background-color: #ED8074;
   border-color: #ED8074;
   border-radius : 20px;
+  color: white;
+}
+
+.btn:hover {
+  margin-left : 8px;
+  background-color: #ED8074;
+  border-color: #ED8074;
+  border-radius: 20px;
+  color: #2B0548;
+
 }
 
 .big-button {
   padding: 20px;
   border-radius: 30px;
   font-size: 20px;
+}
+
+.btn-button:hover {
+  background-color: #ED8074;
+  border-color: #ED8074;
+  border-radius: 20px;
+  color: #2B0548;
+
+}
+
+#btn-add-flat {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
 }

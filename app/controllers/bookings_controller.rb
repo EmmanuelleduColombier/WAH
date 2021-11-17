@@ -20,9 +20,9 @@ class BookingsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id
     @booking.user = current_user
-    number_of_days = @booking.end - @booking.start
-    @booking.total_price = @flat.price * number_of_days
     if @booking.save
+      number_of_days = @booking.end - @booking.start
+      @booking.total_price = @flat.price * number_of_days
       redirect_to bookings_path
     else
       render :new

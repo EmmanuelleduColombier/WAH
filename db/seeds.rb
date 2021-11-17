@@ -7,9 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Review.destroy_all
 Booking.destroy_all
 Flat.destroy_all
 User.destroy_all
+
+User.create(email: 'ben@gmail.com', last_name: 'mcconnell', first_name: 'ben', password: '123456')
 
 10.times do
   email = Faker::Internet.email

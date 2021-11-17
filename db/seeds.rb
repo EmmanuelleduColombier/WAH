@@ -18,9 +18,9 @@ User.destroy_all
   password = "123456"
   user = User.create!(email: email, last_name: last_name, first_name: first_name, password: password)
 
-  title = "Very nice flat in Paris !"
+  title = "Very nice desk in Paris!"
   address = Faker::Address.full_address
-  room_type = "Just the sofa dude"
+  room_type = "shared desk space in living room"
   persons = rand(1..10)
   price = rand(10..30)
   description = Faker::Lorem.paragraph

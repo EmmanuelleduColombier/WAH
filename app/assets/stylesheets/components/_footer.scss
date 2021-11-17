@@ -3,9 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 85px;
+  height: 10vh;
   padding: 0px 50px;
-  margin-top: 10px;
   color: #ED8074;
 }
 .footer-links {
@@ -27,5 +26,5 @@
 }
 
 .content-wrapper {
-  min-height: calc(100vh - 70px - 85px);
+  min-height: calc(100vh - 10vh - 10vh);
 }

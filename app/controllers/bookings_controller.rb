@@ -31,12 +31,15 @@ class BookingsController < ApplicationController
   def edit
     @booking = Booking.find(params[:id])
     authorize @booking
+    @flat = Flat.find(@booking.flat_id)
   end
 
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
+    @flat = Flat.find(@booking.flat_id)
     @booking.update(booking_params)
+    @booking.update(total_price: set_total_price)
     redirect_to bookings_path
   end
 

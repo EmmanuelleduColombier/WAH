@@ -1,0 +1,33 @@
+.searchbar {
+  position: relative;
+  height: 60px;
+}
+
+.inindex {
+  width: 40vw;
+}
+
+.inbanner {
+ width: 500px;
+}
+
+.searchbar .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.searchinput {
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+  border-radius: 20px;
+  height: 60px;
+}
+
+.searchinput:focus {
+  border: 2px solid #ED8074;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}

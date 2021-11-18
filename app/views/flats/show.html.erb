@@ -23,7 +23,6 @@
       <p>Max places: <%= @flat.persons %></p>
       <div>
         <% if @flat.user.id == current_user.id %>
-          <%= link_to "Rent my co-work", flats_path, class: "btn"  %>
           <%= link_to flat_path(@flat), class:"btn", method: :delete, data: { confirm: "Are you sure?" } do %>
             <div>Delete</div>
           <% end %>

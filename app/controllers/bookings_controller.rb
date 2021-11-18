@@ -1,17 +1,10 @@
 class BookingsController < ApplicationController
-  def index
-    @bookings = policy_scope(Booking)
-  end
 
   def new
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
     authorize @booking
   end
-
-  # def mybookings
-  #   @bookings = Booking.joins(:flat).where(flat: {user: current_user})
-  # end
 
   def create
     @booking = Booking.new(booking_params)
@@ -22,7 +15,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     set_total_price if @booking.start && @booking.end
     if @booking.save
-      redirect_to bookings_path
+      redirect_to dashboard_bookings_path
     else
       render :new
     end
@@ -40,12 +33,17 @@ class BookingsController < ApplicationController
     @flat = Flat.find(@booking.flat_id)
     @booking.update(booking_params)
     @booking.update(total_price: set_total_price)
-    redirect_to bookings_path
+    redirect_to dashboard_bookings_path
   end
 
   def respond
     @booking = Booking.find(params[:id])
     @booking.update(status: params[:status])
+  end
+
+  def dashboard
+    @my_bookings = Booking.where(user: current_user)
+    @my_flat_bookings = Booking.joins(:flat).where(flat: {user: current_user})
   end
 end
 

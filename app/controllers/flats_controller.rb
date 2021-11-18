@@ -36,26 +36,27 @@ class FlatsController < ApplicationController
   end
 
   def edit
+    @flat = Flat.find(params[:id])
+    authorize @flat
   end
 
   def update
+    @flat = Flat.find(params[:id])
+    authorize @flat
+    @flat.update(flat_params)
+    redirect_to flat_path(@flat)
   end
 
   def destroy
-  end
-
-  def myflats
-    @flats = policy_scope(Flat)
-    @bookings = []
-    @flats.each do |flat|
-      @bookings.push(Booking.where(flat: flat))
-    end
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to flats_path
   end
 
   private
 
   def flat_params
     params.require(:flat).permit(:title, :address, :room_type, :persons, :price, :owner_present, :has_pet, :has_computer,
-                                      :has_coffee, :description, photos: [])
+                                  :has_coffee, :description, photos: [])
   end
 end

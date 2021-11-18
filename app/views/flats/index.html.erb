@@ -1,11 +1,31 @@
 <div class='container-fluid p-0 pt-5'>
   <div class="container">
-
     <h1 class="d-flex justify-content-center mt-4">Places where you can work around you !</h1>
-    <div class="d-flex justify-content-center">
-      <%= form_tag flats_path, class:" searchbar inindex", method: :get do %>
-        <%= text_field_tag :query, params[:query], class: "form-control searchinput", placeholder: "Find a flat" %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+
+  <div class="d-flex justify-content-center">
+    <%= form_tag flats_path, class:" searchbar inindex", method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control searchinput", placeholder: "Find a flat" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="d-flex mt-4">
+
+    <div class="mr-5">
+      <% @flats.each do |flat| %>
+        <%= link_to flat_path(flat), class: "links" do %>
+          <div class="card-product mb-3">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="card-product-infos">
+                  <h2><%= flat.title %></h2>
+                  <p><%= flat.address %></p>
+                  <h3><%= flat.price %>€ / day </h3>
+                  <% if flat.user.id == current_user.id %>
+                    <%= link_to "Edit this flat", edit_flat_path(flat) %>
+                  <% end %>
+              </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="d-flex mt-4">

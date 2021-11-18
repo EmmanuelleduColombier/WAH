@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
-    @booking.status = 'pending'
+    @booking.status = 'Pending'
     @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id
     @booking.user = current_user
@@ -36,14 +36,21 @@ class BookingsController < ApplicationController
     redirect_to dashboard_bookings_path
   end
 
-  def respond
-    @booking = Booking.find(params[:id])
-    @booking.update(status: params[:status])
-  end
-
   def dashboard
     @my_bookings = Booking.where(user: current_user)
     @my_flat_bookings = Booking.joins(:flat).where(flat: {user: current_user})
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(status: 'Accepted')
+    redirect_to dashboard_bookings_path(tab: "Profile")
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    @booking.update(status: 'Declined')
+    redirect_to dashboard_bookings_path(tab: "Profile")
   end
 end
 

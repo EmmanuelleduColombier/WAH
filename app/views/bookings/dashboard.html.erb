@@ -1,14 +1,19 @@
 <div class="container">
 
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-mybookings-tab" data-bs-toggle="tab" data-bs-target="#nav-mybookings" type="button" role="tab" aria-controls="nav-mybookings" aria-selected="true">My current bookings</button>
-        <button class="nav-link" id="nav-bookingsonmyflats-tab" data-bs-toggle="tab" data-bs-target="#nav-bookingsonmyflats" type="button" role="tab" aria-controls="nav-bookingsonmyflats" aria-selected="false">Bookings on my flats</button>
-      </div>
-    </nav>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link <% if !params[:tab] %>active<% end %>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My current bookings</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link <% if params[:tab] %>active<% end %>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Bookings on my own flats</button>
+    </li>
 
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active d-flex flex-wrap" id="nav-mybookings" role="tabpanel" aria-labelledby="nav-mybookings-tab">
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade <% if !params[:tab] %>show active<% end %>" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="d-flex">
         <% @my_bookings.each do |booking| %>
           <div class="card booking-card mt-3 me-3">
             <div class="booking-card-content">
@@ -17,7 +22,7 @@
                 <p class="dates"><i class="far fa-calendar-minus"></i>  <%=booking.start.strftime("%a, %b the %e")%> -> <%= booking.end.strftime("%a, %b the %e")%></p>
                 <p class="dates">Total cost: <%= booking.total_price %>€</p>
                 <p class="dates">Comment:<%= booking.comments %></p>
-                <p class="dates">Status: <%= booking.status %></p>
+                <p class="dates <%= text_color(booking.status) %>">Status: <%= booking.status %></p>
               </div>
               <%= link_to edit_booking_path(booking), class:"btn-edit" do %>
                 <i class="far fa-edit"></i>
@@ -26,19 +31,33 @@
           </div>
         <% end %>
       </div>
+    </div>
 
-      <div class="tab-pane fade d-flex flex-wrap" id="nav-bookingsonmyflats" role="tabpanel" aria-labelledby="nav-bookingsonmyflats-tab">
+    <div class="tab-pane fade <% if params[:tab] %>show active<% end %>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="d-flex">
         <% @my_flat_bookings.each do |booking| %>
-          <div class="card booking-card">
-            <p>Flat number: <%= booking.flat_id %></p>
-            <p>FROM:<%= booking.start %>TO: <%= booking.end %></p>
-            <p>Total cost: <%= booking.total_price %>€</p>
-            <p>Comment: <%= booking.comments %></p>
-            <p>Status: <%= booking.status %></p>
-            <%= link_to "Accept/Decline", "", class:"btn btn-primary" %>
+          <div class="card booking-card mt-3 me-3">
+            <div class="booking-card-content">
+              <div>
+                <p><strong><%= booking.flat.title %></strong></p>
+                <p class="dates"><i class="far fa-calendar-minus"></i>  <%=booking.start.strftime("%a, %b the %e")%> -> <%= booking.end.strftime("%a, %b the %e")%></p>
+                <p class="dates">Total cost: <%= booking.total_price %>€</p>
+                <p class="dates">Comment:<%= booking.comments %></p>
+                <p class="dates <%= text_color(booking.status) %>">Status: <%= booking.status %></p>
+              </div>
+              <div class="choices d-flex">
+                <%= link_to accept_booking_path(booking), method: :patch do %>
+                  <i class="far fa-check-circle"></i>
+                <% end %>
+                <%= link_to decline_booking_path(booking), method: :patch do %>
+                  <i class="far fa-times-circle"></i>
+                <% end %>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
 
+  </div>
 </div>

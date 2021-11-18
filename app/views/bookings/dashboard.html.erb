@@ -18,14 +18,20 @@
           <div class="card booking-card mt-3 me-3">
             <div class="booking-card-content">
               <div>
-                <p><strong><%= booking.flat.title %></strong></p>
+                <p><strong><%= booking.flat.title %></strong><%= booking.flat.rating %></p>
                 <p class="dates"><i class="far fa-calendar-minus"></i>  <%=booking.start.strftime("%a, %b the %e")%> -> <%= booking.end.strftime("%a, %b the %e")%></p>
                 <p class="dates">Total cost: <%= booking.total_price %>€</p>
                 <p class="dates">Comment:<%= booking.comments %></p>
                 <p class="dates <%= text_color(booking.status) %>">Status: <%= booking.status %></p>
               </div>
-              <%= link_to edit_booking_path(booking), class:"btn-edit" do %>
-                <i class="far fa-edit"></i>
+              <% if booking.end > Date.today %>
+                <%= link_to edit_booking_path(booking), class:"btn-edit" do %>
+                  <div class="btn-orange">Edit your booking</div>
+                <% end %>
+              <% else %>
+                <%= link_to new_booking_review_path(booking), class:"btn-edit" do %>
+                  <div class="btn-orange">Leave a review</div>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -39,7 +45,7 @@
           <div class="card booking-card mt-3 me-3">
             <div class="booking-card-content">
               <div>
-                <p><strong><%= booking.flat.title %></strong></p>
+                <p><strong><%= booking.flat.title %></strong><%= booking.flat.rating %></p>
                 <p class="dates"><i class="far fa-calendar-minus"></i>  <%=booking.start.strftime("%a, %b the %e")%> -> <%= booking.end.strftime("%a, %b the %e")%></p>
                 <p class="dates">Total cost: <%= booking.total_price %>€</p>
                 <p class="dates">Comment:<%= booking.comments %></p>

@@ -37,8 +37,8 @@ class BookingsController < ApplicationController
   end
 
   def dashboard
-    @my_bookings = Booking.where(user: current_user)
-    @my_flat_bookings = Booking.joins(:flat).where(flat: {user: current_user})
+    @my_bookings = Booking.where(user: current_user).sort_by{ |booking| booking.end }.reverse
+    @my_flat_bookings = Booking.joins(:flat).where(flat: {user: current_user}).sort_by{ |booking| booking.start }
   end
 
   def accept

@@ -16,6 +16,9 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    # if @flat.reviews
+    #   @reviews = @flat.reviews
+    # end
     authorize @flat
   end
 
@@ -26,8 +29,9 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
-    authorize @flat
     @flat.user = current_user
+    @flat.rating = 1
+    authorize @flat
     if @flat.save
       redirect_to flats_path
     else

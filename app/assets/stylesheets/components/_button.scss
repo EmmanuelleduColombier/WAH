@@ -1,19 +1,29 @@
 .btn-orange {
   margin-left : 8px;
   background-color: #ED8074;
-  border-color: #ED8074;
   border-radius : 20px;
   color: white;
   padding: 10px;
+  &:hover {
+    margin-left : 8px;
+    background-color: #ED8074;
+    border-radius: 20px;
+    color: #2B0548;
+  }
 }
 
-.btn-orange:hover {
+.btn-orange-reverse {
   margin-left : 8px;
-  background-color: #ED8074;
-  border-color: #ED8074;
+  padding: 10px;
+  background-color: none;
+  border: 2px solid #ED8074;
+  color: #ED8074;
   border-radius: 20px;
-  color: #2B0548;
-}
+  &:hover {
+    margin-left : 8px;
+    color: #2B0548;
+  }
+};
 
 .big-button {
   padding: 20px;
@@ -23,14 +33,10 @@
 
 .btn-button:hover {
   background-color: #ED8074;
-  border-color: #ED8074;
   border-radius: 20px;
   color: #2B0548;
-
 }
 
-#btn-add-flat {
-  //position: fixed;
-  // bottom: 50px;
-  // right: 50px;
+.icon-btn {
+  font-size: 30px;
 }

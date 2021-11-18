@@ -12,3 +12,12 @@
 .navbar-lewagon .navbar-brand img {
   width: 80px;
 }
+
+.navbar {
+  // height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999999;
+}

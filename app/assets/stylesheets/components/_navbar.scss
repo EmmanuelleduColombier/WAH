@@ -21,3 +21,18 @@
   left: 0;
   z-index: 9999999;
 }
+
+.dropdown-item {
+  font-family: "Shippori Antique B1", sans-serif;
+}
+
+.collapse {
+  display: flex;
+  // justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}

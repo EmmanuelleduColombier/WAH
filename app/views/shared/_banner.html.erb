@@ -4,8 +4,11 @@
     <h1>Work at Home</h1>
     <p>Rent your flat to work with buddies everyday. Share a moment with another pro !</p>
     <p>(and eventually, find love and get married ❤️)</p>
-    <% if user_signed_in? %>
-      <div class="d-flex justify-content-center mt-4"><%= link_to "Browse flats", flats_path, class: "btn big-button" %></div>
-    <% end %>
+    <div class="d-flex justify-content-center">
+      <%= form_tag flats_path, class:"mt-5 searchbar inbanner", method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control searchinput", placeholder: "Find a flat" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>

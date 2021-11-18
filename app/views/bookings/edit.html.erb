@@ -1,13 +1,14 @@
+<div class="container mt-4">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Edit your booking</h2>
 
-<h3>Your booking :
-  Start :<%= @booking.start %> <hr>
-  End :<%= @booking.end %> <hr>
-  Comments :<%= @booking.comments %>
-</h3>
-
-<%= simple_form_for @booking do |f| %>
-  <%= f.input :start %>
-  <%= f.input :end %>
-  <%= f.input :comments %>
-  <%= f.submit %>
-<% end %>
+    <div id="booking-form" data-dates="<%= @flat.bookings_dates %>">
+      <%= simple_form_for @booking do |f| %>
+        <%= f.input :start, as: :string, required: true, input_html: {class: "datepicker"} %>
+        <%= f.input :end, as: :string, required: true, input_html: {class: "datepicker"} %>
+        <%= f.input :comments, required: false %>
+        <%= f.button :submit, "Go WAH", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
     <h2>Add a booking</h2>
 
-    <div id="booking-form" data-dates="<%= @flat.bookings_dates %>">
+    <div id="booking-form" class="init-flat-pickr" data-dates="<%= @flat.bookings_dates %>">
       <%= simple_form_for [@flat, @booking] do |f| %>
         <%= f.input :start, as: :string, required: true, input_html: {class: "datepicker"} %>
         <%= f.input :end, as: :string, required: true, input_html: {class: "datepicker"} %>

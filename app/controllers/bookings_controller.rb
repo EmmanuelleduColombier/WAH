@@ -37,8 +37,9 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
+    @flat = Flat.find(@booking.flat_id)
     @booking.update(booking_params)
-    raise
+    @booking.update(total_price: set_total_price)
     redirect_to bookings_path
   end
 

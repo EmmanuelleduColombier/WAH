@@ -1,0 +1,17 @@
+<div class="container">
+<h1>Edit a flat</h1>
+<%= simple_form_for(@flat) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :address %>
+  <%= f.input :price %>
+  <%= f.input :room_type %>
+  <%= f.input :persons %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :description, as: :text%>
+  <%= f.input :owner_present, as: :boolean %><%= f.input :has_pet, as: :boolean %><%= f.input :has_computer, as: :boolean %>
+  <%= f.input :has_coffee, as: :boolean %>
+
+
+  <%= f.submit class: "btn"%>
+<% end %>
+</div>

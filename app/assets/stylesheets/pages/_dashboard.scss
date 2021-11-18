@@ -1,10 +1,22 @@
-.bookings_container {
-  border: 2px solid #ED8074;
-  width: 35vw;
-  padding: 0px 10px;
-  border-radius: 20px;
-  opacity: 0.5;
-  &:hover {
-    opacity: 1;
-  }
+.booking-card {
+ width:fit-content;
+ border-radius: 4px;
+ &:hover {
+   border: 1px solid #ED8074;
+ }
+}
+
+.dates {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.btn-edit {
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.booking-card-content {
+  position: relative;
 }

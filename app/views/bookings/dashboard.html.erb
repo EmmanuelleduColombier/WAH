@@ -1,48 +1,44 @@
 <div class="container">
-<div class="d-flex justify-content-between">
 
-  <div class="bookings_container">
-    <h1>My current bookings</h1>
-    <% @my_bookings.each do |booking| %>
-      <div class="card mb-2">
-        <p>Flat number: <%= booking.flat.title %></p>
-        <p>FROM: <%= booking.start %> TO: <%= booking.end %></p>
-        <p>Total cost: <%= booking.total_price %>€</p>
-        <p>Comment:<%= booking.comments %></p>
-        <p>Status: <%= booking.status %></p>
-        <%= link_to "Edit this booking", edit_booking_path(booking), class:"btn btn-primary" %>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-mybookings-tab" data-bs-toggle="tab" data-bs-target="#nav-mybookings" type="button" role="tab" aria-controls="nav-mybookings" aria-selected="true">My current bookings</button>
+        <button class="nav-link" id="nav-bookingsonmyflats-tab" data-bs-toggle="tab" data-bs-target="#nav-bookingsonmyflats" type="button" role="tab" aria-controls="nav-bookingsonmyflats" aria-selected="false">Bookings on my flats</button>
       </div>
-    <% end %>
-  </div>
+    </nav>
 
-  <div class="bookings_container">
-    <h1>Bookings on my flats</h1>
-    <% @my_flat_bookings.each do |booking| %>
-      <div class="card mb-2">
-        <p>Flat number: <%= booking.flat_id %></p>
-        <p>FROM:<%= booking.start %>TO: <%= booking.end %></p>
-        <p>Total cost: <%= booking.total_price %>€</p>
-        <p>Comment: <%= booking.comments %></p>
-        <p>Status: <%= booking.status %></p>
-        <%= link_to "Accept/Decline", "", class:"btn btn-primary" %>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active d-flex flex-wrap" id="nav-mybookings" role="tabpanel" aria-labelledby="nav-mybookings-tab">
+        <% @my_bookings.each do |booking| %>
+          <div class="card booking-card mt-3 me-3">
+            <div class="booking-card-content">
+              <div>
+                <p><strong><%= booking.flat.title %></strong></p>
+                <p class="dates"><i class="far fa-calendar-minus"></i>  <%=booking.start.strftime("%a, %b the %e")%> -> <%= booking.end.strftime("%a, %b the %e")%></p>
+                <p class="dates">Total cost: <%= booking.total_price %>€</p>
+                <p class="dates">Comment:<%= booking.comments %></p>
+                <p class="dates">Status: <%= booking.status %></p>
+              </div>
+              <%= link_to edit_booking_path(booking), class:"btn-edit" do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+
+      <div class="tab-pane fade d-flex flex-wrap" id="nav-bookingsonmyflats" role="tabpanel" aria-labelledby="nav-bookingsonmyflats-tab">
+        <% @my_flat_bookings.each do |booking| %>
+          <div class="card booking-card">
+            <p>Flat number: <%= booking.flat_id %></p>
+            <p>FROM:<%= booking.start %>TO: <%= booking.end %></p>
+            <p>Total cost: <%= booking.total_price %>€</p>
+            <p>Comment: <%= booking.comments %></p>
+            <p>Status: <%= booking.status %></p>
+            <%= link_to "Accept/Decline", "", class:"btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
 </div>
-</div>
-
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul>

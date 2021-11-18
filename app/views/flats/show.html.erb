@@ -38,7 +38,7 @@
 
 
     <div class="d-flex flex-column  align-items-end justify-content-between">
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <%= cl_image_tag current_user.photo.key, crop: :fill, class:"avatar" %>
       <h2 class="card-trip-pricing"><%= @flat.price %> € / day</h2>
       <p> Rating <%= %></p>
       <p>Max places <%= @flat.persons %></p>

@@ -20,8 +20,7 @@ class BookingsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @booking.flat_id = @flat.id
     @booking.user = current_user
-    number_of_days = @booking.end - @booking.start
-    @booking.total_price = @flat.price * number_of_days
+    set_total_price if @booking.start && @booking.end
     if @booking.save
       redirect_to bookings_path
     else
@@ -50,6 +49,11 @@ class BookingsController < ApplicationController
 end
 
 private
+
+def set_total_price
+  number_of_days = @booking.end - @booking.start + 1
+  @booking.total_price = @flat.price * number_of_days
+end
 
 def booking_params
   params.require(:booking).permit(:comments, :start, :end)

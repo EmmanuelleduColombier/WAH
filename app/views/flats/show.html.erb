@@ -11,6 +11,11 @@
       <p><%= @flat.owner_present %><%= @flat.has_pet %><%= @flat.has_computer %>
       <%= @flat.has_coffee %></p>
     </div>
+    <div class="images">
+      <% @flat.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
     <div class="d-flex flex-column  align-items-end justify-content-between">
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
       <h2 class="card-trip-pricing"><%= @flat.price %> € / day</h2>

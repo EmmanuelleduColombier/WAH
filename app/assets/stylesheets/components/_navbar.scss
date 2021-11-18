@@ -14,7 +14,6 @@
 }
 
 .navbar {
-  // height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
@@ -28,7 +27,6 @@
 
 .collapse {
   display: flex;
-  // justify-content: space-between;
   justify-content: space-evenly;
 }
 
@@ -36,3 +34,17 @@
   right: 0;
   left: auto;
 }
+
+// #btn-ghost {
+//   color: #fdfbfb;
+//   border: 1px solid #4A4A4A;
+//   padding: 8px 24px;
+//   border-radius: 50px;
+//   font-weight: lighter;
+//   opacity: 0.6;
+//   transition: opacity 0.3s ease;
+// }
+
+// #btn-ghost:hover {
+//   opacity: 1;
+// }

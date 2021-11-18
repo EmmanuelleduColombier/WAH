@@ -20,6 +20,9 @@
                   <h2><%= flat.title %></h2>
                   <p><%= flat.address %></p>
                   <h3><%= flat.price %>€ / day </h3>
+                  <% if flat.user.id == current_user.id %>
+                    <%= link_to "Edit this flat", edit_flat_path(flat) %>
+                  <% end %>
               </div>
           </div>
         <% end %>

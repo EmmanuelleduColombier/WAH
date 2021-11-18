@@ -1,6 +1,6 @@
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 80px;
   width: 40vw;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -43,8 +43,13 @@
   color: #2b0548
 }
 
-.images {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+.card-trip {
+  height: 100%;
+  width: 80wv;
+
 }
+
+.carousel img {
+    width: 80%;
+    height: 70%;
+  }

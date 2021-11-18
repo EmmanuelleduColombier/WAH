@@ -1,26 +1,47 @@
 <div class="container">
 
 <div class="card-trip m-5">
-  <%= image_tag "flat1.jpg" %>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+     <% i = 0 %>
+      <% @flat.photos.each do |photo| %>
+      <% if i == 0 %>
+        <div class="carousel-item active">
+      <% else %>
+        <div class="carousel-item">
+      <% end %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <% i+=1 %>
+        </div>
+      <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
   <div class="card-trip-infos align-items-start">
     <div>
       <h2><%= @flat.title %></h2>
-      <p>Address: </p><%= @flat.address %>
-      <p>Description: </p><%= @flat.description %>
-      <p>Room you can rent: </p><%= @flat.room_type %>
+      <p>Address </p><%= @flat.address %>
+      <p>Description </p><%= @flat.description %>
+      <p>Room you can rent </p><%= @flat.room_type %>
       <p><%= @flat.owner_present %><%= @flat.has_pet %><%= @flat.has_computer %>
       <%= @flat.has_coffee %></p>
     </div>
-    <div class="images">
-      <% @flat.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-    </div>
+
+
+
     <div class="d-flex flex-column  align-items-end justify-content-between">
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
       <h2 class="card-trip-pricing"><%= @flat.price %> € / day</h2>
-      <p> Rating: <%= %></p>
-      <p>Max places: <%= @flat.persons %></p>
+      <p> Rating <%= %></p>
+      <p>Max places <%= @flat.persons %></p>
       <div>
         <% if @flat.user.id == current_user.id %>
           <%= link_to "Rent my co-work", flats_path, class: "btn"  %>

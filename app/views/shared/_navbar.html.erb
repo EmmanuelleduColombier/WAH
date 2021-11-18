@@ -26,11 +26,14 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item active">
-          <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%>
+        <%# <li class="nav-item active"> %>
+          <%# <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
+        <%# </li> %>
+        <%# <li class="nav-item active"> %>
+          <%# <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%>
+        <%# </li> %>
+        <li>
+        <%= link_to "Connexion", new_user_registration_path, class: "btn btn-primary" %>
         </li>
       <% end %>
     </ul>

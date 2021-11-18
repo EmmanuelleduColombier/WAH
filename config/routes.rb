@@ -11,7 +11,10 @@ Rails.application.routes.draw do
       get :dashboard
     end
     member do
-      patch 'respond'
+      patch 'accept'
+    end
+    member do
+      patch 'decline'
     end
     resources :reviews, only: [:new, :create]
   end

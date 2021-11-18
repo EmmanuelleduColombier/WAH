@@ -20,3 +20,31 @@
 .booking-card-content {
   position: relative;
 }
+
+.choices {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.nav-item {
+  width: 50%;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  width: 100%;
+  color: black
+}
+
+.text-green {
+  color: green;
+}
+.text-red {
+  color: red
+}
+.text-green {
+  color: grey
+}

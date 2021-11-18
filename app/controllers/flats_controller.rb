@@ -44,14 +44,6 @@ class FlatsController < ApplicationController
   def destroy
   end
 
-  def myflats
-    @flats = policy_scope(Flat)
-    @bookings = []
-    @flats.each do |flat|
-      @bookings.push(Booking.where(flat: flat))
-    end
-  end
-
   private
 
   def flat_params

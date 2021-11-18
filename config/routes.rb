@@ -3,15 +3,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :flats do
-    collection do
-      get 'myflats'
-    end
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :edit, :update] do
+  resources :bookings, only: [:edit, :update] do
     collection do
-      get :mybookings
+      get :dashboard
     end
     member do
       patch 'respond'

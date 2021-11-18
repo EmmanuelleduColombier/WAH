@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-around">
+  <div class="mybookings">
+
+    <h1>My current bookings</h1>
+
+    <% @my_bookings.each do |booking| %>
+      <div class="card mb-2">
+        <p>Flat number: <%= booking.flat_id %></p>
+        <p>FROM: <%= booking.start %> TO: <%= booking.end %></p>
+        <p>Total cost: <%= booking.total_price %>€</p>
+        <p>Comment:<%= booking.comments %></p>
+        <p>Status: <%= booking.status %></p>
+        <%= link_to "Edit this booking", edit_booking_path(booking), class:"btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="myflats">
+
+    <h1>Bookings on my flats</h1>
+
+    <% @my_flat_bookings.each do |booking| %>
+      <div class="card mb-2">
+        <p>Flat number: <%= booking.flat_id %></p>
+        <p>FROM:<%= booking.start %>TO: <%= booking.end %></p>
+        <p>Total cost: <%= booking.total_price %>€</p>
+        <p>Comment: <%= booking.comments %></p>
+        <p>Status: <%= booking.status %></p>
+        <%= link_to "Accept/Decline", "", class:"btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -5,7 +5,7 @@
     <h1>My current bookings</h1>
     <% @my_bookings.each do |booking| %>
       <div class="card mb-2">
-        <p>Flat number: <%= booking.flat_id %></p>
+        <p>Flat number: <%= booking.flat.title %></p>
         <p>FROM: <%= booking.start %> TO: <%= booking.end %></p>
         <p>Total cost: <%= booking.total_price %>€</p>
         <p>Comment:<%= booking.comments %></p>
@@ -31,3 +31,18 @@
 
 </div>
 </div>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>

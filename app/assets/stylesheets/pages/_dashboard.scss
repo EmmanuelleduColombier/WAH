@@ -1,3 +1,10 @@
 .bookings_container {
-  border: 1px solid #ED8074;
+  border: 2px solid #ED8074;
+  width: 35vw;
+  padding: 0px 10px;
+  border-radius: 20px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 }

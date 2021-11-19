@@ -13,10 +13,10 @@
       <% if user_signed_in? %>
         <%= link_to "Dashboard", dashboard_bookings_path, class:"btn-orange-reverse" %>
         <div class="dropdown d-flex align-items-center">
-          <button class="btn-dropdown-transparent dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn-dropdown-transparent dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar" %>
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu  dropdown-menu-end" aria-labelledby="dropdownMenuButton">
             <%= link_to "Add a flat", new_flat_path, class: "dropdown-item" %>
             <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

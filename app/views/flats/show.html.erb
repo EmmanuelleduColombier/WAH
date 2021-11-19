@@ -26,7 +26,11 @@
         <p>Address: <span class="intitule"> <%= @flat.address %></span></p>
         <p>Description: <span class="intitule"> <%= @flat.description %></span></p>
         <p>Room you can rent: <span class="intitule"> <%= @flat.room_type %></span></p>
-        <p>Rating: <span class="intitule"> <%= %></span></p>
+        <% if @flat.rating %>
+          <p>Rating: <span class="intitule"> <%= @flat.rating %>/ 5</span></p>
+        <% else %>
+          <p>Rating: <span class="intitule"><em>No rating for this flat</em></span></p>
+        <% end %>
         <p>Max places: <span class="intitule"><%= @flat.persons %></span></p>
         <p><%= @flat.owner_present %><%= @flat.has_pet %><%= @flat.has_computer %>
         <%= @flat.has_coffee %></p>

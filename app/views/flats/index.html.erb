@@ -27,7 +27,12 @@
                   <div class="card-product-infos">
                       <h2><%= flat.title %></h2>
                       <p><%= flat.address %></p>
-                      <h3><%= flat.price %>€ / day </h3>
+                      <% if flat.rating %>
+                        <p>Rating: <%= flat.rating %>/ 5</p>
+                      <% else %>
+                        <p><em>No rating for this flat</p></em>
+                      <% end %>
+                      <h3>Price: <%= flat.price %>€ / day </h3>
                   </div>
               </div>
             <% end %>

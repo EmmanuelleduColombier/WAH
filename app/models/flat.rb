@@ -17,4 +17,8 @@ class Flat < ApplicationRecord
   def bookings_dates
     self.bookings.pluck(:start, :end).flat_map { |array| (array.first..array.last).to_a.map(&:to_s) }
   end
+
+  def average_rating
+    self.reviews.pluck(:rating).sum / reviews.count.to_f
+  end
 end

@@ -12,12 +12,11 @@
           <%= f.input :description, as: :text%>
           <%# = f.input :owner_present, as: :boolean%><%#= f.input :has_pet, as: :boolean %><%#= f.input :has_computer, as: :boolean %>
           <%#= f.input :has_coffee, as: :boolean %>
-        </div>
-        <div class="row col-12 d-flex align-items-end justify-content-end">
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         </div>
+
       </div>
-      <%= f.submit class: "btn btn-orange"%>
+      <%= f.submit class: "btn btn-orange", id: "new-flat-btn"%>
     <% end %>
   </div>
 </div>

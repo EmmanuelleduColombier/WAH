@@ -1,6 +1,8 @@
 class Flat < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_many :reviews, through: :bookings
+
   has_many_attached :photos
   validates :title, :address, :price, :room_type, :persons, :description, presence: true
   geocoded_by :address

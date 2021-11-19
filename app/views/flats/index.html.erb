@@ -1,42 +1,44 @@
-<div class='container-fluid p-0 pt-5'>
+<div class='container-fluid p-0 pt-1'>
   <div class="container">
-    <h1 class="d-flex justify-content-center mt-4">Places where you can work around you !</h1>
 
-  <div class="d-flex justify-content-center">
-    <%= form_tag flats_path, class:" searchbar inindex", method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control searchinput", placeholder: "Find a flat" %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
+    <h1 class="d-flex justify-content-center">Places where you can work around you !</h1>
 
-  </div>
-  <% if @flats.count == 0 %>
-    <div class="d-flex justify-content-center pt-4" id="no-flat">
-      <h4>No flat available</h4>
+    <div class="d-flex justify-content-center">
+      <%= form_tag flats_path, class:" searchbar inindex", method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control searchinput", placeholder: "Find a flat" %>
+        <%= submit_tag "Search", class: "btn btn-orange" %>
+      <% end %>
     </div>
-  <% end %>
 
+    <% if @flats.count == 0 %>
+      <h2 class="d-flex justify-content-center align-items-center " id="no-flat">
+        Oops... There is no available flats in around your place !!
+      </h2>
 
-    <div class="d-flex mt-4">
-      <div class="mr-5">
-        <% @flats.each do |flat| %>
-          <%= link_to flat_path(flat), class: "links" do %>
-            <div class="card-product mb-3">
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-                <div class="card-product-infos">
-                    <h2><%= flat.title %></h2>
-                    <p><%= flat.address %></p>
-                    <h3><%= flat.price %>€ / day </h3>
-                </div>
-            </div>
+    <% else %>
+
+      <div class="d-flex mt-4">
+        <div class="me-3">
+          <% @flats.each do |flat| %>
+            <%= link_to flat_path(flat), class: "links" do %>
+              <div class="card-product mb-3">
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                  <div class="card-product-infos">
+                      <h2><%= flat.title %></h2>
+                      <p><%= flat.address %></p>
+                      <h3><%= flat.price %>€ / day </h3>
+                  </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-    </div>
-    <% if @flats.count > 0 %>
-      <div id=mapbox data-controller="mapbox"
-          data-mapbox-markers-value="<%= @markers.to_json %>"
-          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          style="width: 100%; height: 500px; top:97px;">
+        </div>
+        <div id="mapbox" data-controller="mapbox"
+            data-mapbox-markers-value="<%= @markers.to_json %>"
+            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            style="width: 100%; height: 500px; top:97px;">
+        </div>
       </div>
+
     <% end %>
 
   </div>

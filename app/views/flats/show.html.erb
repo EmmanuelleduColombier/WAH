@@ -7,7 +7,7 @@
       <div class="carousel-inner">
         <% @flat.photos.each do |photo| %>
           <div class="carousel-item <%= @flat.photos.first == photo ? "active" : nil %>">
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag photo.key, crop: :fill %>
           </div>
         <% end %>
       </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="card-trip-infos d-flex align-items-center">
-      <div class="infos-right d-flex flex-column align-items-start">
+      <div class="infos-right d-flex flex-column align-items-start mt-4 mx-4">
         <p>Address: <span class="intitule"> <%= @flat.address %></span></p>
         <p>Description: <span class="intitule"> <%= @flat.description %></span></p>
         <p>Room you can rent: <span class="intitule"> <%= @flat.room_type %></span></p>
@@ -32,20 +32,19 @@
         <%= @flat.has_coffee %></p>
       </div>
 
-      <div class=" infos-left d-flex flex-column align-items-end justify-content-between">
+      <div class=" infos-left d-flex flex-column align-items-end justify-content-between mx-5">
         <%= cl_image_tag current_user.photo.key, crop: :fill, class:"avatar" %>
-        <h2 class="card-trip-pricing"><%= @flat.price %> € / day</h2>
+        <h2 class="card-trip-pricing pb-4 pt-1"><%= @flat.price %> € / day</h2>
         <div>
           <% if @flat.user.id == current_user.id %>
             <%= link_to flat_path(@flat), class:"btn-orange", method: :delete, data: { confirm: "Are you sure?" } do %>
               <%= "Delete" %>
             <% end %>
           <% else %>
-            <%= link_to 'Book now', new_flat_booking_path(params[:id]), class: "btn-orange" %>
+            <%= link_to 'Book now', new_flat_booking_path(params[:id]), class: "btn btn-orange" %>
           <% end %>
-          <%= link_to flats_path, class:"icon-btn ms-1" do %>
-            <i class="fas fa-chevron-circle-left"></i>
-          <% end %>
+          <%= link_to "Back to flats", flats_path, class:"btn btn-orange" %>
+
         </div>
       </div>
     </div>

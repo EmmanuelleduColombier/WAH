@@ -22,7 +22,9 @@
           <% @flats.each do |flat| %>
             <%= link_to flat_path(flat), class: "links" do %>
               <div class="card-product mb-3">
-                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <% unless flat.photos.first.nil? %>
+               <%= cl_image_tag flat.photos.first.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
                   <div class="card-product-infos">
                       <h2><%= flat.title %></h2>
                       <p><%= flat.address %></p>

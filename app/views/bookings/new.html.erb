@@ -8,6 +8,7 @@
         <%= f.input :end, as: :string, required: true, input_html: {class: "datepicker"} %>
         <%= f.input :comments, required: false %>
         <%= f.button :submit, "Go WAH", class: "btn-orange my-2" %>
+        <%= link_to "Back to flats", flats_path, class:"btn btn-orange" %>
       <% end %>
     </div>
   </div>

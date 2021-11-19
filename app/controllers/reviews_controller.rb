@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.booking = @booking
     @flat = Flat.find(@booking.flat_id)
-    @flat.update(rating: ((@flat.rating + @review.rating) / 2))
     if @review.save
+      @flat.update(rating: @flat.average_rating)
       redirect_to flat_path(@flat)
     else
       render :new

@@ -30,7 +30,6 @@ class FlatsController < ApplicationController
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user
-    @flat.rating = 1
     authorize @flat
     if @flat.save
       redirect_to flats_path

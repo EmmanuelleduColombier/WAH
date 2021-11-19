@@ -23,12 +23,12 @@ Flat.destroy_all
   user.photo.attach(io: file, filename: 'photo.jpg', content_type: 'image/jpg')
 
   address = ["38 rue Ramey Paris", "39 avenue Mozart Paris", "17 villa Gaudelet Paris", "2 rue Doudeauville Paris", "14 rue de Vaucouleurs Paris", "84 boulevard Ornano Paris", "45 rue Pouchet Paris", "2 rue Montmartre Paris", "8 rue Victor Letalle Paris", "25 rue de Courcelles"]
-  title = "Very nice desk in Paris!"
+  title = ["Very nice desk in Paris!", "Lovely flat and nice co-worky", "Come to my place!", "Proper desk and hot coffee", "Room and fun!", "This is my nice flat"]
   room_type = "shared desk space in living room"
   persons = rand(1..10)
   price = rand(10..30)
   description = Faker::Lorem.paragraph
-  flat = Flat.create(title: title, address: address.sample, room_type: room_type, persons: persons, price: price, description: description, user: user)
+  flat = Flat.create(title: title.sample, address: address.sample, persons: persons, price: price, description: description, user: user)
 
   4.times do
     file = URI.open(Cloudinary::Uploader.upload('https://source.unsplash.com/collection/1118894/1600x900')['secure_url'])

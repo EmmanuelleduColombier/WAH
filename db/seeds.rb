@@ -24,7 +24,7 @@ counter = 0
 
   p "user ok"
   address = ["38 rue Ramey Paris", "39 avenue Mozart Paris", "17 villa Gaudelet Paris", "2 rue Doudeauville Paris", "14 rue de Vaucouleurs Paris", "84 boulevard Ornano Paris", "45 rue Pouchet Paris", "2 rue Montmartre Paris", "8 rue Victor Letalle Paris", "25 rue de Courcelles"]
-  title = ["Very nice desk in Paris!", "Lovely flat and nice co-worky", "Come to my place!", "Proper desk and hot coffee", "Room and fun!", "This is my nice flat"]
+  title = ["Very nice desk in Paris!", "Lovely flat and nice co-worky", "Come to my place!", "Proper desk and hot coffee", "Room and fun!", "This is my nice flat", "Very good wifi and a green garden", "Peaceful area with nice host", "Funny atmosphere with a lot of pros", "quiet flat near restaurants"]
   persons = rand(1..10)
   price = rand(10..30)
   description = Faker::Lorem.paragraph
@@ -45,8 +45,10 @@ counter = 0
 
   content = Faker::Lorem.paragraph
   rating = rand(1..5)
-  Review.create(content: content, rating: rating, booking: booking)
+  if Review.create(content: content, rating: rating, booking: booking)
+    flat.update(rating: flat.average_rating)
+  end
 
-  "1 round done 🚀"
+  p "1 round done 🚀"
   counter += 1
 end

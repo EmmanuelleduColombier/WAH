@@ -26,9 +26,10 @@
 }
 
 .content-wrapper {
-  min-height: calc(100vh- 10vh - 10vh);
-  margin-top: 71px;
+  min-height: calc(100vh - 94px) !important;
+  padding-top: 96px;
 }
+
 .footer .push {
   height: 50px;
 }

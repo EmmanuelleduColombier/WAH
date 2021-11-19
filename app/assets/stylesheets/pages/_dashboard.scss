@@ -1,5 +1,5 @@
 .booking-card {
- width:fit-content;
+ width: 700px;
  border-radius: 4px;
  &:hover {
    border: 1px solid #ED8074;
@@ -53,4 +53,26 @@
 }
 .text-grey {
   color: grey
+}
+
+#green-check {
+  color: green;
+}
+
+#red-check {
+  color: red;
+}
+
+#profile-tab {
+  color: #2B0548;
+  &:hover {
+    color: #ED8074;
+  }
+}
+
+#home-tab {
+  color: #2B0548;
+   &:hover {
+     color: #ED8074;
+   }
 }

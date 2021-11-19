@@ -53,10 +53,10 @@
               </div>
               <div class="choices d-flex">
                 <%= link_to accept_booking_path(booking), method: :patch do %>
-                  <i class="far fa-check-circle"></i>
+                  <i class="far fa-check-circle" id="green-check"></i>
                 <% end %>
                 <%= link_to decline_booking_path(booking), method: :patch do %>
-                  <i class="far fa-times-circle"></i>
+                  <i class="far fa-times-circle" id="red-check"></i>
                 <% end %>
               </div>
             </div>

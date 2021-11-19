@@ -4,7 +4,7 @@ class Flat < ApplicationRecord
   has_many :reviews, through: :bookings
 
   has_many_attached :photos
-  validates :title, :address, :price, :room_type, :persons, :description, presence: true
+  validates :title, :address, :price, :persons, :description, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   include PgSearch::Model

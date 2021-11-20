@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem "geocoder"
 gem 'turbolinks_render'
+gem 'date_validator'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
